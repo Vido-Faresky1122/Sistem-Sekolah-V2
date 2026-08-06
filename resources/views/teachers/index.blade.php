@@ -3,9 +3,8 @@
 @section('content')
 
     <x-alert type="ERROR">
-        Terdapat kesalahan ketika menambahkan data siswa baru ke dalam sistem sekolah
+        Terdapat kesalahan ketika menambahkan data guru baru ke dalam sistem sekolah
     </x-alert>
-    
     {{-- Content Start --}}
     <div class="mb-8 flex items-end justify-between border-b border-[#E5E3DB] pb-5">
         <div>
@@ -14,13 +13,13 @@
             </p>
 
             <h1 class="font-display text-3xl font-semibold text-[#16213A]">
-                Daftar Siswa
+                Daftar Guru
             </h1>
         </div>
 
-        <a href="{{ route('students.create') }}"
+        <a href="{{ route('teachers.create') }}"
             class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
-            Catat Siswa Baru
+            Catat Guru Baru
         </a>
     </div>
 
@@ -29,51 +28,65 @@
             <thead>
                 <tr class="border-b border-[#16213A] text-[11px] uppercase tracking-[0.15em] text-[#16213A]">
                     <th class="w-14 px-5 py-3.5 font-semibold">No.</th>
-                    <th class="px-5 py-3.5 font-semibold">NIS</th>
-                    <th class="px-5 py-3.5 font-semibold">Nama Siswa</th>
-                    <th class="px-5 py-3.5 font-semibold">Kelas</th>
-                    <th class="px-5 py-3.5 font-semibold">Jurusan</th>
+                    <th class="px-5 py-3.5 font-semibold">NIP</th>
+                    <th class="px-5 py-3.5 font-semibold">Nama Guru</th>
+                    <th class="px-5 py-3.5 font-semibold">Jenis Kelamin</th>
+                    <th class="px-5 py-3.5 font-semibold">Mata Pelajaran</th>
+                    <th class="px-5 py-3.5 font-semibold">Telepon</th>
+                    <th class="px-5 py-3.5 font-semibold">Status</th>
                     <th class="px-5 py-3.5 text-right font-semibold">Tindakan</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($students as $student)
+                @forelse ($teachers as $teacher)
                     <tr class="border-b border-[#EFEDE6] hover:bg-[#FAF9F5]">
                         <td class="px-5 py-4 font-display text-lg text-[#A16207]">
                             {{ $loop->iteration }}
                         </td>
 
                         <td class="px-5 py-4 font-mono text-xs text-slate-500">
-                            {{ $student['nis'] }}
+                            {{ $teacher['nip'] }}
                         </td>
 
                         <td class="px-5 py-4 font-medium text-[#16213A]">
-                            {{ $student['name'] }}
+                            {{ $teacher['name'] }}
                         </td>
 
                         <td class="px-5 py-4">
-                            {{ $student['class'] }}
+                            {{ $teacher['gender'] }}
                         </td>
 
                         <td class="px-5 py-4">
-                            {{ $student['major'] }}
+                            {{ $teacher['subject'] }}
                         </td>
+
+                        <td class="px-5 py-4">
+                            {{ $teacher['phone'] }}
+                        </td>
+                        @if ($teacher['status'] == "Aktif")
+                            <td class="px-5 py-4 text-green-600">
+                                {{ $teacher['status'] }}
+                            </td>
+                        @else
+                            <td class="px-5 py-4 text-red-600">
+                                {{ $teacher['status'] }}
+                        @endif
                         <td class="px-5 py-4">
                             <div class="flex justify-end gap-4 text-xs font-medium">
 
-                                <a href="{{ route('students.show', ['id' => $student['id']]) }}"
+                                <a href="{{ route('teachers.show', ['id' => $teacher['id']]) }}"
                                     class="text-[#16213A] hover:text-[#A16207]">
                                     Lihat
                                 </a>
 
-                                <a href="{{ route('students.edit', ['id' => $student['id']]) }}"
+                                <a href="{{ route('teachers.edit', ['id' => $teacher['id']]) }}"
                                     class="text-[#16213A] hover:text-[#A16207]">
                                     Ubah
                                 </a>
 
-                                <form action="{{ route('students.destroy', ['id' => $student['id']]) }}" method="POST"
-                                    onsubmit="return confirm('Hapus data siswa ini dari buku induk?')">
+                                <form action="{{ route('teachers.destroy', ['id' => $teacher['id']]) }}" method="POST"
+                                    onsubmit="return confirm('Hapus data guru ini dari buku induk?')">
 
                                     @csrf
                                     @method('DELETE')
@@ -90,7 +103,7 @@
                 @empty
                     <tr>
                         <td colspan="6" class="px-5 py-4 text-center text-sm text-slate-500">
-                            Belum ada data siswa yang tercatat.
+                            Belum ada data guru yang tercatat.
                         </td>
                 @endforelse
 
