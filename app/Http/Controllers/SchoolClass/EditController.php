@@ -55,7 +55,9 @@ class EditController extends Controller
         ];
 
         return view('classes.edit', [
-            'title' => $title
+            'title' => $title,
+            'teachers' => $teachers,
+            'majors' => $majors
         ]);
     }
 }

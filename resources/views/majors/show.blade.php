@@ -16,15 +16,15 @@
                     </p>
 
                     <h1 class="font-display text-3xl font-semibold text-[#16213A]">
-                        Budi Ariyanto
+                        Akuntansi dan Keuangan Lembaga
                     </h1>
 
                     <p class="mt-1 font-mono text-xs text-slate-500">
-                        NIS 2024001
+                       AKL
                     </p>
                 </div>
 
-                <a href="#"
+                <a href="{{ route('majors.edit', ['major' => $major['id']]) }}"
                     class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
                     Ubah
                 </a>
@@ -67,7 +67,7 @@
 
             <div class="flex justify-end gap-4 border-t border-[#E5E3DB] px-8 py-5">
 
-                <a href="" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">
+                <a href="{{ route('majors.index') }}" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">
                     Kembali
                 </a>
 

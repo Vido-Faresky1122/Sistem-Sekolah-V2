@@ -13,9 +13,28 @@ class ShowController extends Controller
     public function __invoke(Request $request, string $id)
     {
         $title = "Sistem Sekolah - Detail Kelas";
+        $schoolclasses = [
+            [
+                'id' => 1,
+                'name' => 'XII AKL 1',
+                'grade' => 'XII',
+                'major' => 'AKL',
+                'homeroom_teacher' => 'Budi Santoso'
+            ],
+            [
+                'id' => 2,
+                'name' => 'XII TKJ 1',
+                'grade' => 'XII',
+                'major' => 'TKJ',
+                'homeroom_teacher' => 'Siti Aminah'
+            ]
+
+        ];
+        $class = collect($schoolclasses)->firstWhere('id', $id);
 
         return view('classes.show', [
-            'title' => $title
+            'title' => $title,
+            'class' => $class
         ]);
     }
 }

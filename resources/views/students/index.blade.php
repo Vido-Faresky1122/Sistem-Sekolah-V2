@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <x-alert type="ERROR">
-        Terdapat kesalahan ketika menambahkan data siswa baru ke dalam sistem sekolah
-    </x-alert>
     
     {{-- Content Start --}}
     <div class="mb-8 flex items-end justify-between border-b border-[#E5E3DB] pb-5">

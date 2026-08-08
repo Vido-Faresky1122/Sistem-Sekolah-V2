@@ -12,6 +12,6 @@ class DestroyController extends Controller
      */
     public function __invoke(Request $request, string $id)
     {
-        return "Menghapus data siswa";
+        return "Menghapus data kelas";
     }
 }

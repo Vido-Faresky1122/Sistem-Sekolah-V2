@@ -2,9 +2,6 @@
 
 @section('content')
 
-    <x-alert type="ERROR">
-        Terdapat kesalahan ketika menambahkan data guru baru ke dalam sistem sekolah
-    </x-alert>
     {{-- Content Start --}}
     <div class="mb-8 flex items-end justify-between border-b border-[#E5E3DB] pb-5">
         <div>
@@ -64,14 +61,9 @@
                         <td class="px-5 py-4">
                             {{ $teacher['phone'] }}
                         </td>
-                        @if ($teacher['status'] == "Aktif")
-                            <td class="px-5 py-4 text-green-600">
-                                {{ $teacher['status'] }}
-                            </td>
-                        @else
-                            <td class="px-5 py-4 text-red-600">
-                                {{ $teacher['status'] }}
-                        @endif
+                        <td>
+                            <x-status-badge :status="$teacher['status']" />
+                        </td>
                         <td class="px-5 py-4">
                             <div class="flex justify-end gap-4 text-xs font-medium">
 

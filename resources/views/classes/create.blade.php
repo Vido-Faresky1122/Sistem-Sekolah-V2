@@ -9,11 +9,11 @@
         </a>
 
         <h1 class="font-display mt-2 text-3xl font-semibold text-[#16213A]">
-            Catat Guru Baru
+            Catat Kelas Baru
         </h1>
 
         <p class="mt-1 text-sm text-slate-500">
-            Isi data untuk mendaftarkan guru ke buku induk.
+            Isi data untuk mendaftarkan kelas ke buku induk.
         </p>
 
     </div>
@@ -72,7 +72,7 @@
 
         <div class="flex justify-end gap-4 border-t border-[#EFEDE6] pt-6">
 
-            <a href="{{ route('teachers.index') }}"
+            <a href="{{ route('classes.index') }}"
                 class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">
                 Batal
             </a>

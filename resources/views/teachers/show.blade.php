@@ -24,7 +24,7 @@
                     </p>
                 </div>
 
-                <a href="#"
+                <a href="{{ route('teachers.edit', ['id' => $teacher['id']]) }}"
                     class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
                     Ubah
                 </a>
@@ -89,7 +89,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Aktif
+                        <x-status-badge :status="$teacher['status']" />
                     </dd>
                 </div>
 
@@ -97,7 +97,7 @@
 
             <div class="flex justify-end gap-4 border-t border-[#E5E3DB] px-8 py-5">
 
-                <a href="" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">
+                <a href="{{ route('teachers.index') }}" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">
                     Kembali
                 </a>
 
