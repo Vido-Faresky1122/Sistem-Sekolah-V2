@@ -16,11 +16,11 @@
                     </p>
 
                     <h1 class="font-display text-3xl font-semibold text-[#16213A]">
-                        Budi Ariyanto
+                        {{ $student['name'] }}
                     </h1>
 
                     <p class="mt-1 font-mono text-xs text-slate-500">
-                        NIS 2024001
+                        NIS: {{ $student['nis'] }}
                     </p>
                 </div>
 
@@ -39,7 +39,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        2024001
+                        {{ $student['nis'] }}
                     </dd>
                 </div>
 
@@ -49,7 +49,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Budi Ariyanto
+                        {{ $student['name'] }}
                     </dd>
                 </div>
 
@@ -69,7 +69,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        RPL
+                        {{ $student['major'] }}
                     </dd>
                 </div>
 
@@ -79,7 +79,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        XII AKL 1
+                        {{ $student['class'] }}
                     </dd>
                 </div>
 

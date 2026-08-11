@@ -16,11 +16,11 @@
                     </p>
 
                     <h1 class="font-display text-3xl font-semibold text-[#16213A]">
-                        XII AKL 1
+                        {{ $class['name'] }}
                     </h1>
 
                     <p class="mt-1 font-mono text-xs text-slate-500">
-                        Akuntansi dan Keuangan Lembaga
+                        {{ $major['description'] }}
                     </p>
                 </div>
 
@@ -39,7 +39,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        XII AKL 1
+                        {{ $class['name'] }}
                     </dd>
                 </div>
 
@@ -49,7 +49,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        XII
+                        {{ $class['grade'] }}
                     </dd>
                 </div>
 
@@ -59,7 +59,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Akuntansi dan Keuangan Lembaga
+                        {{ $major['name'] }}
                     </dd>
                 </div>
 
@@ -69,7 +69,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Budi Santoso
+                        {{ $teacher['name'] }}
                     </dd>
                 </div>
 

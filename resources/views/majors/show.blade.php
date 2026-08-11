@@ -39,7 +39,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        AKL
+                        {{ $major['code'] }}
                     </dd>
                 </div>
 
@@ -49,7 +49,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Akuntansi dan Keuangan Lembaga
+                        {{ $major['name'] }}
                     </dd>
                 </div>
 
@@ -59,7 +59,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Program keahlian yang membekali murid dengan kompetensi pencatatan dan pelaporan keuangan.
+                        {{ $major['description'] }}
                     </dd>
                 </div>
 

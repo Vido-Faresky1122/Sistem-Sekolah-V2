@@ -16,11 +16,11 @@
                     </p>
 
                     <h1 class="font-display text-3xl font-semibold text-[#16213A]">
-                        Budi Ariyanto
+                        {{ $teacher['name'] }}
                     </h1>
 
                     <p class="mt-1 font-mono text-xs text-slate-500">
-                        NIS 2024001
+                        NIP: {{ $teacher['nip'] }}
                     </p>
                 </div>
 
@@ -39,7 +39,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        198501012024
+                        {{ $teacher['nip'] }}
                     </dd>
                 </div>
 
@@ -49,7 +49,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Budi Ariyanto
+                        {{ $teacher['name'] }}
                     </dd>
                 </div>
 
@@ -59,7 +59,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Laki-laki
+                        {{ $teacher['gender']}} 
                     </dd>
                 </div>
 
@@ -69,7 +69,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        Akuntansi Dasar
+                        {{ $teacher['subject'] }}
                     </dd>
                 </div>
 
@@ -79,7 +79,7 @@
                     </dt>
 
                     <dd class="font-medium text-[#16213A]">
-                        081234560001
+                        {{ $teacher['phone'] }}
                     </dd>
                 </div>
 
