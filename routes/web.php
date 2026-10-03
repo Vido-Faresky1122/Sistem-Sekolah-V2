@@ -9,27 +9,42 @@ use App\Http\Controllers\SchoolClass\DestroyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('students')->name('students.')->group(function () {
-    Route::get('/', [StudentController::class, 'index'])->name('index');
+Route::middleware('auth')->prefix('students')->name('students.')->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('index')->middleware('role:student,teacher');
 
-    Route::get('/create', [StudentController::class, 'create'])->name('create');
+    Route::get('/create', [StudentController::class, 'create'])->name('create')->middleware('role:teacher');
 
-    Route::post('/store', [StudentController::class, 'store'])->name('store');
+    Route::post('/store', [StudentController::class, 'store'])->name('store')->middleware('role:teacher');
 
-    Route::get('/{id}', [StudentController::class, 'show'])->name('show')->whereNumber('id');
+    Route::get('/{student}', [StudentController::class, 'show'])->name('show')->whereNumber('id')->middleware('role:student,teacher');
 
-    Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit')->whereNumber('id');
+    Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit')->whereNumber('id')->middleware('role:teacher');
 
-    Route::put('/{id}', [StudentController::class, 'update'])->name('update')->whereNumber('id');
+    Route::put('/{student}', [StudentController::class, 'update'])->name('update')->whereNumber('id')->middleware('role:teacher');
 
-    Route::delete('/{id}', [StudentController::class, 'destroy'])->name('destroy')->whereNumber('id');
+    Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy')->whereNumber('id')->middleware('role:teacher');
 });
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'loginView'])->name('login-view');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post');
+
+    Route::get('/register', [AuthController::class, 'registerView'])->name('register-view');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post');
+});
+
+
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 Route::prefix('teachers')->name('teachers.')->group(function () {
     Route::get('/', [TeacherController::class, 'index'])->name('index');
