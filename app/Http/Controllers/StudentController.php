@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Student\UpdateRequest;
+use App\Models\Major;
+use App\Models\SchoolClass;
 use App\Models\Student;
 use App\Http\Requests\Student\StoreRequest;
 use Illuminate\Auth\Events\Validated;
@@ -11,15 +13,34 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = "Sistem Sekolah - Daftar Siswa";
 
-        $students = Student::select('id', 'nis', 'name', 'major', 'class')->get();
+        $search = $request->query('search');
+        $class = $request->query('class');
+        $major = $request->query('major');
+        $students = Student::with(['schoolClass', 'major'])->select('id', 'nis', 'name', 'class_id', 'major_id')
+            ->when($search, function ($query, $search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('nis', 'like', "%{$search}%");
+                });
+            })
+            ->when($class, fn($query, $class) => $query->where('class_id', '=', $class))
+            ->when($major, fn($query, $major) => $query->where('major_id', '=', $major))
+            ->paginate(10)
+            ->withQueryString();
+
+        $schoolClasses = SchoolClass::get(['id', 'name']);
+
+        $majors = Major::get(['id', 'name']);
 
         return view('students.index', [
             'title' => $title,
-            'students' => $students
+            'students' => $students,
+            'schoolClasses' => $schoolClasses,
+            'majors' => $majors,
         ]);
     }
 

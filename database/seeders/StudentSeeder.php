@@ -13,14 +13,16 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $students = [
-            ['nis' => '1001', 'name' => 'John Doe', 'gender' => 'Laki-laki', 'major' => 'TKJ', 'class' => 'X TKJ 1'],
-            ['nis' => '1002', 'name' => 'Jane Smith', 'gender' => 'Perempuan', 'major' => 'AKL', 'class' => 'X AKL 1'],
-            ['nis' => '1003', 'name' => 'Michael Johnson', 'gender' => 'Laki-laki', 'major' => 'BiD', 'class' => 'X BiD 1'],
-            ['nis' => '1004', 'name' => 'Emily Brown', 'gender' => 'Perempuan', 'major' => 'TKJ', 'class' => 'X TKJ 2'],
-            ['nis' => '1005', 'name' => 'William Davis', 'gender' => 'Laki-laki', 'major' => 'AKL', 'class' => 'X AKL 2'],
-        ];
+        Student::factory()->count(100)->create();
 
-        Student::upsert($students, ['nis'], ['name', 'major', 'class']);
+        // $students = [
+        //     ['nis' => '1001', 'name' => 'John Doe', 'gender' => 'Laki-laki', 'major' => 'TKJ', 'class' => 'X TKJ 1'],
+        //     ['nis' => '1002', 'name' => 'Jane Smith', 'gender' => 'Perempuan', 'major' => 'AKL', 'class' => 'X AKL 1'],
+        //     ['nis' => '1003', 'name' => 'Michael Johnson', 'gender' => 'Laki-laki', 'major' => 'BiD', 'class' => 'X BiD 1'],
+        //     ['nis' => '1004', 'name' => 'Emily Brown', 'gender' => 'Perempuan', 'major' => 'TKJ', 'class' => 'X TKJ 2'],
+        //     ['nis' => '1005', 'name' => 'William Davis', 'gender' => 'Laki-laki', 'major' => 'AKL', 'class' => 'X AKL 2'],
+        // ];
+
+        // Student::upsert($students, ['nis'], ['name', 'major', 'class']);
     }
 }
